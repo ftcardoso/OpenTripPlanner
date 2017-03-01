@@ -18,11 +18,11 @@ otp.config = {
     //File should be loaded in index.html
     locales : {
         'en': otp.locale.English,
-        'de': otp.locale.German,
-        'sl': otp.locale.Slovenian,
-        'fr': otp.locale.French,
-        'it': otp.locale.Italian,
-        'ca_ES': otp.locale.Catalan
+        // 'de': otp.locale.German,
+        // 'sl': otp.locale.Slovenian,
+        // 'fr': otp.locale.French,
+        // 'it': otp.locale.Italian,
+        // 'ca_ES': otp.locale.Catalan
     },
 
     languageChooser : function() {
@@ -76,12 +76,6 @@ otp.config = {
              name: 'Carto Positron',
              tileUrl: 'http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
              attribution : 'Map tiles by Carto/MapZen. Map data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.'
-         },
-         {
-             name: 'Transport Tiles',
-             tileUrl: 'http://{s}.tile.thunderforest.com/transport/{z}/{x}/{y}.png',
-             subdomains : ['a','b','c'],
-             attribution: 'Data from <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors. Tiles from <a href="http://www.thunderforest.com/transport/">Andy Allan</a>'
          },
          {
              name: 'Stamen Toner Lite',
