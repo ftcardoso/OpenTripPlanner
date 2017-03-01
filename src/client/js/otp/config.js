@@ -113,16 +113,16 @@ otp.config = {
      * Site name / description / branding display options
      */
 
-    siteName            : "My OTP Instance",
-    siteDescription     : "An OpenTripPlanner deployment.",
+    siteName            : "OpenTripPlanner México",
+    siteDescription     : "OpenTripPlanner México",
     logoGraphic         : 'images/otp_logo_darkbg_40px.png',
     // bikeshareName    : "",
     //Enable this if you want to show frontend language chooser
-    showLanguageChooser : true,
+    showLanguageChooser : false,
 
-    showLogo            : true,
+    showLogo            : false,
     showTitle           : true,
-    showModuleSelector  : true,
+    showModuleSelector  : false,
     metric              : false,
 
 
@@ -142,7 +142,7 @@ otp.config = {
         {
             id : 'planner',
             className : 'otp.modules.multimodal.MultimodalPlannerModule',
-            defaultBaseLayer : 'MapQuest OSM',
+            defaultBaseLayer : 'OSM Standard Tiles',
             isDefault: true
         },
         {
