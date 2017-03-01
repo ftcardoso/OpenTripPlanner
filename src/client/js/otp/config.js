@@ -113,8 +113,8 @@ otp.config = {
      * Site name / description / branding display options
      */
 
-    siteName            : "OpenTripPlanner México",
-    siteDescription     : "OpenTripPlanner México",
+    siteName            : "OpenTripPlanner Mexico",
+    siteDescription     : "OpenTripPlanner Mexico",
     logoGraphic         : 'images/otp_logo_darkbg_40px.png',
     // bikeshareName    : "",
     //Enable this if you want to show frontend language chooser
