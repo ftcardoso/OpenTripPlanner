@@ -51,17 +51,17 @@ otp.locale.English = {
      * - [cssClass]: <string> the name of a CSS class to apply to the widget.
      * If not specified, the default styling is used.
      */
-    infoWidgets : [
-            {
-                title: 'About',
-                content: '<p>About this site</p>',
-                //cssClass: 'otp-contactWidget',
-            },
-            {
-                title: 'Contact',
-                content: '<p>Comments? Contact us at...</p>'
-            },
-    ],
+    // infoWidgets : [
+    //         {
+    //             title: 'About',
+    //             content: '<p>About this site</p>',
+    //             //cssClass: 'otp-contactWidget',
+    //         },
+    //         {
+    //             title: 'Contact',
+    //             content: '<p>Comments? Contact us at...</p>'
+    //         },
+    // ],
 
 
     time:
