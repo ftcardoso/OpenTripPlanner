@@ -113,8 +113,8 @@ otp.config = {
      * Site name / description / branding display options
      */
 
-    siteName            : "SmartSDK Public Transportation",
-    siteDescription     : "SmartSDK Public Transportation",
+    siteName            : "EMBERS Public Transportation",
+    siteDescription     : "EMBERS Public Transportation",
     logoGraphic         : 'images/otp_logo_darkbg_40px.png',
     // bikeshareName    : "",
     //Enable this if you want to show frontend language chooser
