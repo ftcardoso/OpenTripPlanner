@@ -1,3 +1,113 @@
+/*var markers_measures = {};
+
+// if (document.body.clientWidth <= 767) {
+//   var isCollapsed = false;
+// } else {
+//   var isCollapsed = false;
+// }
+
+var measurand_parameters = ['Carbon Monoxide', 'Nitrogen Monoxide', 'Nitrogen Dioxide', 'Sulfur Dioxide', 'Particle Pollution', 'Relative Humidity', 'Temperature'];
+var measurand_parameters_aux = ['CO', 'O3', 'NO2', 'SO2', 'PM10',  'RH', 'T'];
+var measurand_parameters_unit = ['PPM', 'PPB', 'PPB', 'PPB', 'µ', '%', 'ºC'];
+
+var grayIcon = L.icon({
+    iconUrl: 'assets/img/gray.png',
+
+    iconSize:     [25, 40], // size of the icon
+    iconAnchor:   [15, 82], // point of the icon which will correspond to marker's location
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+
+var greenIcon = L.icon({
+    iconUrl: 'assets/img/green.png',
+
+    iconSize:     [25, 40], // size of the icon
+    iconAnchor:   [15, 82], // point of the icon which will correspond to marker's location
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+
+var yellowIcon = L.icon({
+    iconUrl: 'assets/img/yellow.png',
+
+    iconSize:     [25, 40], // size of the icon
+    iconAnchor:   [15, 82], // point of the icon which will correspond to marker's location
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+
+var orangeIcon = L.icon({
+    iconUrl: 'assets/img/orange.png',
+
+    iconSize:     [25, 40], // size of the icon
+    iconAnchor:   [15, 82], // point of the icon which will correspond to marker's location
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+
+var redIcon = L.icon({
+    iconUrl: 'assets/img/red.png',
+
+    iconSize:     [25, 40], // size of the icon
+    iconAnchor:   [15, 82], // point of the icon which will correspond to marker's location
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+
+var purpleIcon = L.icon({
+    iconUrl: 'assets/img/purple.png',
+
+    iconSize:     [25, 40], // size of the icon
+    iconAnchor:   [15, 82], // point of the icon which will correspond to marker's location
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+
+var brownIcon = L.icon({
+    iconUrl: 'assets/img/brown.png',
+
+    iconSize:     [25, 40], // size of the icon
+    iconAnchor:   [15, 82], // point of the icon which will correspond to marker's location
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+
+CO_RANGE = [0, 4.5, 9.5, 12.5, 15.5, 30.5, 40.5, 50.5]
+CO_AQI = [0, 50, 100, 150, 200, 300, 400, 500]
+CO_COLORS = ['#009966', '#ffde33', '#ff9933', '#cc0033', '#660099', '#7e0023', '#7e0023']
+CO_MARKERS_COLORS = [greenIcon, yellowIcon, orangeIcon, redIcon, purpleIcon, brownIcon, brownIcon]
+CO_AIR_LEVEL = ['Good', 'Moderate', 'Unhealthy for Sensitive Groups', 'Unhealthy', 'Very Unhealthy', 'Hazardous', 'Hazardous']
+
+NO2_RANGE = [0, 0.054, 0.101, 0.361, 0.65, 1.25, 1.65, 2.049]
+NO2_AQI = [0, 50, 100, 150, 200, 300, 400, 500]
+NO2_COLORS = ['#009966', '#ffde33', '#ff9933', '#cc0033', '#660099', '#7e0023', '#7e0023']
+NO2_MARKERS_COLORS = [greenIcon, yellowIcon, orangeIcon, redIcon, purpleIcon, brownIcon, brownIcon]
+NO2_AIR_LEVEL = ['Good', 'Moderate', 'Unhealthy for Sensitive Groups', 'Unhealthy', 'Very Unhealthy', 'Hazardous', 'Hazardous']
+
+SO2_RANGE = [0, 36, 76, 186, 304]
+SO2_AQI = [0, 50, 100, 150, 200]
+SO2_COLORS = ['#009966', '#ffde33', '#ff9933', '#cc0033']
+SO2_MARKERS_COLORS = [greenIcon, yellowIcon, orangeIcon, redIcon]
+SO2_AIR_LEVEL = ['Good', 'Moderate', 'Unhealthy for Sensitive Groups', 'Unhealthy']
+
+O3_RANGE = [0, 0.125, 0.165, 0.205, 0.405, 0.505, 0.605]
+O3_AQI = [0, 100, 150, 200, 300, 400, 500]
+O3_COLORS = ['#aaaaaa', '#ff9933', '#cc0033', '#660099', '#7e0023', '#7e0023']
+O3_MARKERS_COLORS = [grayIcon, orangeIcon, redIcon, purpleIcon, brownIcon, brownIcon]
+O3_AIR_LEVEL = ['Moderate', 'Unhealthy for Sensitive Groups', 'Unhealthy', 'Very Unhealthy', 'Hazardous', 'Hazardous']
+
+PM10_RANGE = [0, 55, 155, 255, 355, 425, 505, 605]
+PM10_AQI = [0, 50, 100, 150, 200, 300, 400, 500]
+PM10_COLORS = ['#009966', '#ffde33', '#ff9933', '#cc0033', '#660099', '#7e0023', '#7e0023']
+PM10_MARKERS_COLORS = [greenIcon, yellowIcon, orangeIcon, redIcon, purpleIcon, brownIcon, brownIcon]
+PM10_AIR_LEVEL = ['Good', 'Moderate', 'Unhealthy for Sensitive Groups', 'Unhealthy', 'Very Unhealthy', 'Hazardous', 'Hazardous']
+
+MEANING = ['Air quality is considered satisfactory, and air pollution poses little or no risk.', 'Air quality is acceptable; however, for some pollutants there may be a moderate health concern for a very small number of people who are unusually sensitive to air pollution.',
+'Members of sensitive groups may experience health effects. The general public is not likely to be affected.', 'Everyone may begin to experience health effects; members of sensitive groups may experience more serious health effects.',
+'Health alert: everyone may experience more serious health effects.', 'Health warnings of emergency conditions. The entire population is more likely to be affected.', 'Health warnings of emergency conditions. The entire population is more likely to be affected.']
+
+
+POLLUTANTS = {	'CO': [CO_RANGE, CO_AQI, CO_COLORS, CO_MARKERS_COLORS, CO_AIR_LEVEL, MEANING],
+				'O3': [O3_RANGE, O3_AQI, O3_COLORS, O3_MARKERS_COLORS, O3_AIR_LEVEL, MEANING], 
+				'NO2': [NO2_RANGE, NO2_AQI, NO2_COLORS, NO2_MARKERS_COLORS, NO2_AIR_LEVEL, MEANING], 
+				'SO2':[SO2_RANGE, SO2_AQI, SO2_COLORS, SO2_MARKERS_COLORS, SO2_AIR_LEVEL, MEANING],
+				'PM10':[PM10_RANGE, PM10_AQI, PM10_COLORS, PM10_MARKERS_COLORS, PM10_AIR_LEVEL, MEANING]
+}
+
 /* This program is free software: you can redistribute it and/or
    modify it under the teMap.jsrms of the GNU Lesser General Public License
    as published by the Free Software Foundation, either version 3 of
@@ -11,7 +121,6 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>. 
 */
-
 otp.namespace("otp.core");
 
 otp.core.Map = otp.Class({
@@ -30,12 +139,24 @@ otp.core.Map = otp.Class({
     initialize : function(webapp) {
         var this_ = this;
         this.webapp = webapp;
-        
-        
-                
+                        
         //var baseLayers = {};
         var defaultBaseLayer = null;
         
+        var markerClusters = new L.MarkerClusterGroup({
+            spiderfyOnMaxZoom: true,
+            showCoverageOnHover: true,
+            zoomToBoundsOnClick: true,
+            disableClusteringAtZoom: 16,
+            animateAddingMarkers: true,
+            polygonOptions: {
+                weight: 3,
+                color: '#48B9C9',
+            },
+            activated: true,
+        });
+        
+
         for(var i=0; i<otp.config.baseLayers.length; i++) { //otp.config.baseLayers.length-1; i >= 0; i--) {
             var layerConfig = otp.config.baseLayers[i];
 
@@ -55,18 +176,69 @@ otp.core.Map = otp.Class({
         
 
         var mapProps = { 
-            layers  : [ defaultBaseLayer ],
+            layers  : [ defaultBaseLayer, markerClusters],
             center : (otp.config.initLatLng || new L.LatLng(0,0)),
             zoom : (otp.config.initZoom || 2),
             zoomControl : false
         }
+
         if(otp.config.minZoom) mapProps['minZoom'] = otp.config.minZoom;  //_.extend(mapProps, { minZoom : otp.config.minZoom });
         if(otp.config.maxZoom) mapProps['maxZoom'] = otp.config.maxZoom; //_.extend(mapProps, { maxZoom : otp.config.maxZoom });
 
         this.lmap = new L.Map('map', mapProps);
+        
+        var lmap = this.lmap
 
         this.layer_control = L.control.layers(this.baseLayers).addTo(this.lmap);
         L.control.zoom({ position : 'topright' }).addTo(this.lmap);
+
+        var lcontrol = this.layer_control
+
+        var environment = new otp.smartsdk.Env(markerClusters)
+        var url = "http://waste.urbiotica.citibrain.com:8002/"
+        console.log("HEYO")
+        
+        $.ajax({
+            url: url,
+            type: "GET",
+            dataType: "json",
+            cache: false,
+            success: function (data) {
+                console.log("Parsing data")
+                console.log(data)
+                environment.parseData(data);
+                console.log(markerClusters.getLayers().length)
+                console.log(lmap)
+            },
+            error: function (error) {
+                alert("Impossible to get Initial data");
+            }
+        })
+        
+        this.lmap.on('click', function (e) {
+            var measures_div = document.getElementById('over_map');
+            var air_concerns = document.getElementById('health');
+            measures_div.style.display = 'none';
+            air_concerns.style.display = 'none';
+
+            var aqi_tables = document.getElementsByClassName('aqi_table');	
+
+            for (var j = 0; j < aqi_tables.length; j++) { 
+                aqi_tables[j].style.display = 'none';
+            }
+        });
+
+        
+        var client = mqtt.connect("http://163.172.148.102:8000/resources/airquality");
+        client.subscribe('airquality');
+        client.on('message', function (topic, message) {
+            var content = JSON.parse(message).data;
+            console.log("Subscribed MQTT")
+            environment.parseData(content);
+        });
+
+        console.log(markerClusters.getLayers().length)
+
         //this.lmap.addControl(new L.Control.Zoom({ position : 'topright' }));
        
         //Adds debug inspector layers overlay to layers control
@@ -190,7 +362,6 @@ otp.core.Map = otp.Class({
     $ : function() {
         return $("#map");
     },
-    
+
     CLASS_NAME : "otp.core.Map"
 });
-

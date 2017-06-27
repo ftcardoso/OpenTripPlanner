@@ -113,7 +113,7 @@ otp.config = {
      * Site name / description / branding display options
      */
 
-    siteName            : "SmartSDK Public Transportation",
+    siteName            : "SmartSDK Public Transportation ai",
     siteDescription     : "SmartSDK Public Transportation",
     logoGraphic         : 'images/otp_logo_darkbg_40px.png',
     // bikeshareName    : "",
@@ -121,9 +121,9 @@ otp.config = {
     showLanguageChooser : false,
 
     showLogo            : false,
-    showTitle           : true,
+    showTitle           : false,
     showModuleSelector  : false,
-    metric              : false,
+    metric              : true,
 
 
     /**
